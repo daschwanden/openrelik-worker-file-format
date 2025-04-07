@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "openrelik-worker-file-format"
+version = "0.1.0"
+description = "Parser for Mach-O and ELF"
+authors = ["Dan Aschwanden <daschwanden@google.com>"]
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.10"
+celery = { extras = ["redis"], version = "^5.4.0" }
+openrelik-worker-common = "^0.10.0"
+asn1crypto = { version = ">= 0.24.0" }
+lief = { version = ">= 0.15.1" }
+pyssdeep = { version = "1.0.0" }
+py-tlsh = { version = ">= 4.7.2" }
+
+[tool.poetry.group.test.dependencies]
+pytest = "*"
+pytest-cov = "^5.0.0"
+pytest-mock = "^3.14.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
