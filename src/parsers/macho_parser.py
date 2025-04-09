@@ -17,6 +17,7 @@
 import json
 import lief
 import os
+import pyssdeep
 import time
 import tlsh
 
@@ -403,7 +404,7 @@ def ParseMachoFatBinary(macho_fd, macho_path):
   hashes.md5 = GetDigest(md5.MD5Hasher(), data)
   hashes.sha256 = GetDigest(sha256.SHA256Hasher(), data)
   hashes.tlsh = tlsh.hash(data)
-  #hashes.ssdeep = self._pyssdeep.get_hash_buffer(data)
+  hashes.ssdeep = pyssdeep.get_hash_buffer(data)
   parsed_fat_binary = ParsedFatBinary(hashes)
   parsed_fat_binary.entropy = GetDigest(entropy.EntropyHasher(), data)
   fat_binary_stats = os.stat(macho_path)
@@ -428,7 +429,7 @@ def ParseMachoBinary(macho_fd, binary):
   hashes.sha256 = GetDigest(sha256.SHA256Hasher(), data)
   hashes.symhash = GetSymhash(binary)
   hashes.tlsh = tlsh.hash(data)
-  #hashes.ssdeep = self._pyssdeep.get_hash_buffer(data)
+  hashes.ssdeep = pyssdeep.get_hash_buffer(data)
   parsed_binary = ParsedBinary(
     hashes=hashes, segments=None, symbols=None, imports=None, flags=None)
   parsed_binary.entropy = GetDigest(entropy.EntropyHasher(), data)

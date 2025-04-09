@@ -12,7 +12,7 @@ Add the below configuration to the OpenRelik docker-compose.yml file.
 ```
 openrelik-worker-file-format:
     container_name: openrelik-worker-file-format
-    image: europe-west1-docker.pkg.dev/repos-daschwanden/labs/openrelik-worker-file-format:v0.1
+    image: ghcr.io/daschwanden/openrelik-worker-file-format:latest
     restart: always
     environment:
       - REDIS_URL=redis://openrelik-redis:6379

@@ -17,6 +17,7 @@
 import json
 import lief
 import os
+import pyssdeep
 import time
 import tlsh
 
@@ -149,7 +150,7 @@ def GetHashes(elf_fd, binary):
   hashes.md5 = GetDigest(md5.MD5Hasher(), data)
   hashes.sha256 = GetDigest(sha256.SHA256Hasher(), data)
   hashes.tlsh = tlsh.hash(data)
-  #hashes.ssdeep = pyssdeep.get_hash_buffer(data)
+  hashes.ssdeep = pyssdeep.get_hash_buffer(data)
   return hashes
 
 
